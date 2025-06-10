@@ -16,13 +16,12 @@ export class Triangle implements Figure {
       (sideA, sideB) => (sideA - sideB) * -1,
     );
 
-    if (
-      this.a <= 0 ||
-      this.b <= 0 ||
-      this.c <= 0 ||
-      sides[0] >= sides[1] + sides[2]
-    ) {
-      throw new Error('Error');
+    if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
+      throw new Error('All side lengths must be positive numbers.');
+    }
+
+    if (sides[0] >= sides[1] + sides[2]) {
+      throw new Error('The provided sides do not form a valid triangle.');
     }
   }
 
@@ -44,7 +43,7 @@ export class Circle implements Figure {
     readonly shape = 'circle',
   ) {
     if (this.radius <= 0) {
-      throw new Error('Error');
+      throw new Error('Radius must be a positive number.');
     }
   }
 
@@ -61,7 +60,7 @@ export class Rectangle implements Figure {
     readonly shape = 'rectangle',
   ) {
     if (this.width <= 0 || this.height <= 0) {
-      throw new Error('Error');
+      throw new Error('Width and height must be positive numbers.');
     }
   }
 
